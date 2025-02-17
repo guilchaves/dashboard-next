@@ -1,5 +1,4 @@
 "use client";
-
 import UserItem from "./UserItem";
 import {
   Command,
@@ -39,7 +38,7 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="flex flex-col gap-4 w-[300px] min-w-[300] border-r min-h-screen p-4">
+    <div className="fixed flex flex-col gap-4 w-[300px] min-w-[300] border-r min-h-screen p-4">
       <div>
         <UserItem />
       </div>
