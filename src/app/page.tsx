@@ -1,9 +1,22 @@
-'use client';
-import { Button } from "@/components/ui/button";
+"use client";
+import General from "@/components/Cards/General";
+import { Card } from "@/components/ui/card";
 
 export default function Home() {
-  return <div>
-    Homepage
-    <Button variant="outline">Click me</Button>
-  </div>;
+  return (
+    <div className="grid gap-8">
+      <div className="grid grid-cols-2 gap-8">
+        <General />
+        <div className="grid gap-8">
+          <Card />
+          <Card />
+        </div>
+      </div>
+      <div className="grid grid-cols-3 gap-8">
+        <Card className="h-[300px]">Hello world</Card>
+        <Card className="h-[300px]">Hello world</Card>
+        <Card className="h-[300px]">Hello world</Card>
+      </div>
+    </div>
+  );
 }
