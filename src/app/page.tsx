@@ -15,21 +15,21 @@ import {
 export default function Home() {
   return (
     <div className="grid gap-8">
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid xl:grid-cols-2 gap-8">
         <General />
         <div className="grid gap-8">
           <Calendar />
           <Calendar />
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-8 h-[300px] overflow-hidden">
+      <div className="grid lg:grid-cols-3 gap-8 lg:h-[300px] mb-8">
         <Lines />
         <Card className="overflow-y-scroll">
           <CardHeader>
-            <CardTitle>Table</CardTitle>
-            <CardDescription>These are the stats of this year.</CardDescription>
+            <CardTitle>Orders</CardTitle>
+            <CardDescription>These are the orders of this month.</CardDescription>
           </CardHeader>
-          <CardContent className="">
+          <CardContent className="px-4 max-h-[350px]">
             <TableComponent />
           </CardContent>
         </Card>
