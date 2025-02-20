@@ -1,5 +1,4 @@
 "use client";
-import { ResponsiveTimeRange } from "@nivo/calendar";
 import {
   Card,
   CardContent,
@@ -9,45 +8,58 @@ import {
 } from "../ui/card";
 
 import { data } from "../../lib/data_calendar";
-const MyResponsiveTimeRange = ({ data }: any) => {
-  return (
-    <ResponsiveTimeRange
-      data={data}
-      from="2018-01-01"
-      to="2018-12-31"
-      emptyColor="#eeeeee"
-      colors={["#61cdbb", "#97e3d5", "#e8c1a0", "#f47560"]}
-      margin={{ top: 40, right: 40, bottom: 100, left: 40 }}
-      dayBorderWidth={2}
-      dayBorderColor="#ffffff"
-      legends={[
-        {
-          anchor: "bottom-right",
-          direction: "row",
-          justify: false,
-          itemCount: 4,
-          itemWidth: 42,
-          itemHeight: 36,
-          itemsSpacing: 14,
-          itemDirection: "right-to-left",
-          translateX: -60,
-          translateY: -60,
-          symbolSize: 20,
-        },
-      ]}
-    />
-  );
-};
+
+// install (please try to align the version of installed @nivo packages)
+// yarn add @nivo/calendar
+import { ResponsiveTimeRange } from "@nivo/calendar";
+
+// make sure parent container have a defined height when using
+// responsive component, otherwise height will be 0 and
+// no chart will be rendered.
+// website examples showcase many properties,
+// you'll often use just a few of them.
+const MyResponsiveTimeRange = ({ data /* see data tab */ }: any) => (
+  <ResponsiveTimeRange
+    data={data}
+    from="2023-01-01"
+    to="2023-12-12"
+    emptyColor="#eeeeee"
+    colors={["#61cdbb", "#97e3d5", "#e8c1a0", "#f47560"]}
+    dayBorderWidth={2}
+    dayBorderColor="#ffffff"
+  />
+);
 
 export default function Calendar() {
+  function generateDataForYear2023() {
+    const data = [];
+    const startDate = new Date("2023-01-01");
+    const endDate = new Date("2023-12-31");
+
+    while (startDate <= endDate) {
+      const value = Math.floor(Math.random() * 301);
+      const formattedDate = startDate.toISOString().split("T")[0];
+
+      data.push({
+        "value": value,
+        "day": formattedDate,
+      });
+
+      startDate.setDate(startDate.getDate() + 1);
+    }
+    return data;
+  }
+
+  const dataArray = generateDataForYear2023();
+
   return (
     <Card>
       <CardHeader>
         <CardTitle>Calendar</CardTitle>
-        <CardDescription>Calendar description</CardDescription>
+        <CardDescription>These are the numbers of this year.</CardDescription>
       </CardHeader>
       <CardContent className="h-[100px] flex items-center w-full">
-        <MyResponsiveTimeRange data={data} />
+        <MyResponsiveTimeRange data={dataArray} />
       </CardContent>
     </Card>
   );

@@ -14,10 +14,10 @@ import {
 
 export default function Home() {
   return (
-    <div className="grid gap-8">
-      <div className="grid xl:grid-cols-2 gap-8">
+    <div className="grid gap-[32px]">
+      <div className="grid xl:grid-cols-2 gap-[32px]">
         <General />
-        <div className="grid gap-8">
+        <div className="grid gap-[32px]">
           <Calendar />
           <Calendar />
         </div>

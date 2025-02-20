@@ -22,7 +22,7 @@ export default function RootLayout({
         <div className="hidden md:flex min-w-[300px] border-r min-h-screen">
           <Sidebar />
         </div>
-        <main className="grid h-full w-full">
+        <main className="grid h-full w-full bg-gradient-to-r from-orange-300 to-orange-600">
           <Header />
           <div className="p-8">
             {children}

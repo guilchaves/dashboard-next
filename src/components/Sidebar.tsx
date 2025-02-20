@@ -15,6 +15,7 @@ import {
   Cookie,
   MessageSquare,
 } from "lucide-react";
+import Link from "next/link";
 
 export default function Sidebar() {
   const menuList = [
@@ -48,20 +49,24 @@ export default function Sidebar() {
             {menuList.map((menu: any, key: number) => (
               <CommandGroup key={key} heading={menu.group}>
                 {menu.items.map((option: any, optionKey: number) => (
-                  <CommandItem
-                    key={optionKey}
-                    className="flex gap-2 cursor-pointer"
-                  >
-                    {option.icon}
-                    {option.text}
-                  </CommandItem>
+                  <Link key={optionKey} href={option.link}>
+                    <CommandItem className="flex gap-2 cursor-pointer">
+                      {option.icon}
+                      {option.text}
+                    </CommandItem>
+                  </Link>
                 ))}
               </CommandGroup>
             ))}
           </CommandList>
         </Command>
       </div>
-      <div>Settings / Notifications </div>
+      <div>
+        <Link href="/team" className="flex items-center gap-2">
+          <Settings />
+          <span>Team settings</span>
+        </Link>
+      </div>
     </div>
   );
 }
